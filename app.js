@@ -21,11 +21,11 @@ const taskSchema = new mongoose.Schema({
 const Task = mongoose.model("Task", taskSchema);
 
 // Route POST pour ajouter une tâche
-app.post("/tasks", async (req, res) => {
+app.post("/tasks/:id", async (req, res) => {
   try {
     const task = new Task(req.body);
     await task.save();
-    res.status(201).send({ message: "Task added successfully", task });
+    res.status(201).send({ message: "Task ajouter avec succés", task });
   } catch (err) {
     res.status(400).send(err);
   }
